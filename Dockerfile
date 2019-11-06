@@ -1,7 +1,9 @@
 
-FROM python:latest
+FROM sagemath/sagemath:latest
 
-RUN pip install pip --upgrade
-RUN pip install git+git://github.com/MarkCBell/curver.git@dev
+RUN sage -pip install pip --upgrade
+RUN sage -pip install numpy
 
-CMD python soln202.py
+COPY ./euler202 ./euler202
+
+CMD ["sage", "-python", "euler202"]

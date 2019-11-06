@@ -9,7 +9,6 @@ setup(
     author_email='mcbell@illinois.edu',
     url='https://github.com/MarkCBell/euler202',
     packages=find_packages(),
-    install_requires=[],
+    install_requires=['numpy'],
     license='MIT License',
-    keywords='Euler',
 )
