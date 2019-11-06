@@ -1,0 +1,52 @@
+# Make zip file.
+ls euler202/
+sage -python -m zipfile -c euler202.zip euler202/*
+ls euler202.zip
+
+# Zip file is runnable!
+sage euler202.zip
+cat euler202/__main__.py
+
+# Build package.
+vim setup.py
+sage setup.py build
+ls
+ls build/
+ls build/lib/
+ls build/lib/euler202/
+sage -pip install .
+sage setup.py sdist
+ls
+ls dist/
+
+# Upload package to PyPI.
+twine upload ./dist/*
+vim euler202/soln.py
+sage setup.py sdist
+twine upload ./dist/*
+vim setup.py
+sage setup.py sdist
+twine upload ./dist/euler202-0.0.2.tar.gz
+vim euler202/soln.py
+
+# Use black to format.
+black euler202/soln.py
+vim euler202/soln.py
+vim euler202/soln.py
+vim setup.py
+sage setup.py sdist
+twine upload ./dist/euler202-0.0.3.tar.gz
+pip install twine
+pip install -e .
+
+# Docker.
+docker ps --all
+docker images
+docker run --rm -it sagemath/sagemath
+vim Dockerfile
+docker build -t markcbell/euler202 .
+docker images
+docker run --rm -it markcbell/euler202
+docker login
+docker push markcbell/euler202
+
